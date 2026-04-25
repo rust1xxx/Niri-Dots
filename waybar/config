@@ -1,0 +1,65 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "custom/sep", "temperature", "custom/sep", "memory", "custom/sep", "disk", "custom/sep", "pulseaudio", "custom/sep", "niri/language", "custom/sep", "tray", "custom/power"],
+
+    "niri/workspaces": {
+        "format": "{index}"
+    },
+
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "interval": 1
+    },
+
+    "cpu": {
+        "format": "cpu: <span color='#880000'>{usage}%</span>",
+        "interval": 2
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": "tem: <span color='#880000'>{temperatureC}°</span>"
+    },
+
+    "memory": {
+        "format": "ram: <span color='#880000'>{percentage}%</span>",
+        "interval": 5
+    },
+
+    "disk": {
+        "format": "mem: <span color='#880000'>{percentage_used}%</span>",
+        "path": "/"
+    },
+
+    "niri/language": {
+        "format": "lng: <span color='#880000'>{short}</span>"
+    },
+
+    "pulseaudio": {
+        "format": "vol: <span color='#880000'>{volume}%</span>"
+    },
+
+    "custom/sep": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "<span color='#880000'>⏻</span>",
+        "on-click": "loginctl terminate-user $USER",
+        "tooltip": false
+    }
+
+}
